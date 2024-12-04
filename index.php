@@ -7,13 +7,10 @@
     <?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body
+    <?php body_class(); ?>>
 
-<header>
-    <h1><?php bloginfo('name'); ?></h1>
-    <p><?php bloginfo('description'); ?></p>
-    <nav class="header-nav" ><?php wp_nav_menu(['theme_location' => 'main-menu']); ?></nav>
-</header>
+    <?php require 'parts/header.php'; ?>
 
 <main>
     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>

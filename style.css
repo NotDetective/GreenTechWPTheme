@@ -4,8 +4,26 @@ Author: Micha Elmans, Bo Leenders
 ...
  */
 
+body{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.page-header{
+    padding: 20px;
+    margin-bottom: 20px;
+    border-bottom: 5px solid black;
+    display: flex;
+    justify-content: space-between;
+}
+
 .header-nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 10px;
+
 }
 
 .header-nav a{
