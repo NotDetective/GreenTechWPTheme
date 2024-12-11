@@ -15,14 +15,6 @@
     <nav class="header-nav"><?php wp_nav_menu(['theme_location' => 'main-menu']); ?></nav>
 </header>
 
-<main>
-    <article>
-        <h2><a href=""></a></h2>
-        <div></div>
-    </article>
-    <
-</main>
-
 <div id="main">
 
     <!-- Post -->
@@ -33,7 +25,9 @@
                 <div class="title">
                     <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
                     <p>
-                        <?php the_excerpt(); ?>
+                        <?php
+
+                        ?>
                     </p>
                 </div>
                 <div class="meta">
@@ -43,11 +37,13 @@
                     <a href="#" class="author"><span class="name">
                         <?php the_author(); ?>
                         </span><img src="<?php echo get_avatar_url(get_the_author_meta('ID')); ?>"
-                                                                                      alt=""/></a>
+                                    alt=""/></a>
                 </div>
             </header>
-            <a href="<?php the_permalink(); ?>" class="image featured"><img src="images/pic01.jpg" alt=""/></a>
-            <p><?php the_content(); ?></p>
+            <a href="<?php the_permalink(); ?>" class="image featured"><img src="<?php echo get_the_post_thumbnail_url(); ?>" alt=""/></a>
+            <p>
+                <?php the_excerpt(); ?>
+            </p>
             <footer>
                 <ul class="actions">
                     <li><a href="<?php the_permalink(); ?>" class="button large">Continue Reading</a></li>
@@ -55,7 +51,9 @@
                 <ul class="stats">
                     <li><a href="#">General</a></li>
                     <li><a href="#" class="icon solid fa-heart">28</a></li>
-                    <li><a href="#" class="icon solid fa-comment">128</a></li>
+                    <li><a href="#" class="icon solid fa-comment">
+                            <?php echo get_comments_number(); ?>
+                        </a></li>
                 </ul>
             </footer>
         </article>
@@ -66,8 +64,10 @@
 
     <!-- Pagination -->
     <ul class="actions pagination">
-        <li><a href="" class="disabled button large previous">Previous Page</a></li>
-        <li><a href="#" class="button large next">Next Page</a></li>
+        <li><a href="<?php echo get_previous_posts_page_link(); ?>"
+               class="<?php echo is_front_page() ? 'button large disabled' : 'button large'; ?>"
+            >Previous Page</a></li>
+        <li><a href="<?php echo get_next_posts_page_link(); ?>" class="button large next">Next Page</a></li>
     </ul>
 
 </div>
