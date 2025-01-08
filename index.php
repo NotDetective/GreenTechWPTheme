@@ -29,7 +29,7 @@
                         <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
                         <p>
                             <?php
-
+                            the_category(', ');
                             ?>
                         </p>
                     </div>
@@ -37,14 +37,18 @@
                         <time class="published" datetime="2015-11-01">
                             <?php the_time('F j, Y'); ?>
                         </time>
-                        <a href="user/post/<?php echo the_author_meta('ID'); ?>" class="author"><span class="name">
-                        <?php the_author(); ?>
-                        </span><img src="<?php echo get_avatar_url(get_the_author_meta('ID')); ?>"
-                                    alt=""/></a>
+                        <a href="user/post/<?php echo the_author_meta('ID'); ?>" class="author">
+                            <span class="name">
+                                <?php the_author(); ?>
+                            </span>
+                            <img src="<?php echo get_avatar_url(get_the_author_meta('ID')); ?>" alt=""/>
+                        </a>
+
                     </div>
                 </header>
-                <a href="<?php the_permalink(); ?>" class="image featured"><img
-                            src="<?php echo get_the_post_thumbnail_url(); ?>" alt=""/></a>
+                <a href="<?php the_permalink(); ?>" class="image featured">
+                    <?php echo the_post_thumbnail('single-post-thumbnail'); ?>
+                </a>
                 <p>
                     <?php the_excerpt(); ?>
                 </p>
@@ -124,7 +128,8 @@
                                     </a></h3>
                                 <time class="published" datetime="2015-10-20"><?php the_time('F j, Y'); ?></time>
                             </header>
-                            <a href="<?php the_permalink(); ?>" class="image"><img src="<?php echo get_the_post_thumbnail_url(); ?>" alt=""/></a>
+                            <a href="<?php the_permalink(); ?>" class="image"><img
+                                        src="<?php echo get_the_post_thumbnail_url(); ?>" alt=""/></a>
                         </article>
                     </li>
                 <?php endwhile; else : ?>
