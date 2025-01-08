@@ -71,11 +71,22 @@
 
         <!-- Pagination -->
         <ul class="actions pagination">
-            <li><a href="<?php echo get_previous_posts_page_link(); ?>"
-                   class="<?php echo is_front_page() ? 'button large disabled' : 'button large'; ?>"
-                >Previous Page</a></li>
-            <li><a href="<?php echo get_next_posts_page_link(); ?>" class="button large next">Next Page</a></li>
+            <li>
+                <?php if (get_previous_posts_link()) : ?>
+                    <a href="<?php echo get_previous_posts_page_link(); ?>" class="button large">Previous Page</a>
+                <?php else : ?>
+                    <a href="#" class="button large disabled">Previous Page</a>
+                <?php endif; ?>
+            </li>
+            <li>
+                <?php if (get_next_posts_link()) : ?>
+                    <a href="<?php echo get_next_posts_page_link(); ?>" class="button large next">Next Page</a>
+                <?php else : ?>
+                    <a href="#" class="button large disabled">Next Page</a>
+                <?php endif; ?>
+            </li>
         </ul>
+
 
     </div>
 
