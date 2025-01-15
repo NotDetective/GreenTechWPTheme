@@ -14,7 +14,6 @@
     <p><?php bloginfo('description'); ?></p>
     <nav class="header-nav"><?php wp_nav_menu(['theme_location' => 'main-menu']); ?></nav>
 </header>
-
 <!-- Wrapper -->
 <div id="wrapper">
 
@@ -50,12 +49,18 @@
                     <?php echo the_post_thumbnail('single-post-thumbnail'); ?>
                 </a>
                 <p>
-                    <?php the_excerpt(); ?>
+                    <?php if (is_front_page()) : ?>
+                        <?php the_excerpt(); ?>
+                    <?php elseif (!is_front_page()) : ?>
+                        <?php the_content(); ?>
+                    <?php endif; ?>
                 </p>
                 <footer>
-                    <ul class="actions">
-                        <li><a href="<?php the_permalink(); ?>" class="button large">Continue Reading</a></li>
-                    </ul>
+                    <?php if (is_front_page()) : ?>
+                        <ul class="actions">
+                            <li><a href="<?php the_permalink(); ?>" class="button large">Continue Reading</a></li>
+                        </ul>
+                    <?php endif; ?>
                     <ul class="stats">
                         <li><a href="#">General</a></li>
                         <li><a href="#" class="icon solid fa-comment">
@@ -70,25 +75,29 @@
         <?php endif; ?>
 
         <!-- Pagination -->
-        <ul class="actions pagination">
-            <li>
-                <?php if (get_previous_posts_link()) : ?>
-                    <a href="<?php echo get_previous_posts_page_link(); ?>" class="button large">Previous Page</a>
-                <?php else : ?>
-                    <a href="#" class="button large disabled">Previous Page</a>
-                <?php endif; ?>
-            </li>
-            <li>
-                <?php if (get_next_posts_link()) : ?>
-                    <a href="<?php echo get_next_posts_page_link(); ?>" class="button large next">Next Page</a>
-                <?php else : ?>
-                    <a href="#" class="button large disabled">Next Page</a>
-                <?php endif; ?>
-            </li>
-        </ul>
+        <?php if (is_front_page()) : ?>
+            <ul class="actions pagination">
+                <li>
+                    <?php if (get_previous_posts_link()) : ?>
+                        <a href="<?php echo get_previous_posts_page_link(); ?>" class="button large">Previous Page</a>
+                    <?php else : ?>
+                        <a href="#" class="button large disabled">Previous Page</a>
+                    <?php endif; ?>
+                </li>
+                <li>
+                    <?php if (get_next_posts_link()) : ?>
+                        <a href="<?php echo get_next_posts_page_link(); ?>" class="button large next">Next Page</a>
+                    <?php else : ?>
+                        <a href="#" class="button large disabled">Next Page</a>
+                    <?php endif; ?>
+                </li>
+            </ul>
+        <?php endif; ?>
 
 
     </div>
+
+    <?php if (is_front_page()) : ?>
 
     <section id="sidebar">
 
@@ -150,6 +159,7 @@
         </section>
 
 </div>
+<?php endif; ?>
 
 <footer>
     <p> &copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?></p>
