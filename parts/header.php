@@ -1,5 +1,6 @@
 <header id="header">
-	<a href="index.html"><img src="images/logo.svg" alt="" class="logo" /></a>
+	<a href="index.html"><img src="http://localhost:10004/wp-content/uploads/2025/01/logo.png" alt=""
+			class="logo" /></a>
 	<nav class="links">
 		<ul>
 			<li><a href="#">Lorem</a></li>
