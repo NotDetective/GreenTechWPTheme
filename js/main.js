@@ -1,4 +1,5 @@
 (function ($) {
+
   var $window = $(window),
     $body = $("body"),
     $menu = $("#menu"),
