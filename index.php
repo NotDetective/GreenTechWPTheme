@@ -9,13 +9,7 @@
 
 <body <?php body_class(); ?>>
 
-<header>
-    <h1><?php bloginfo('name'); ?></h1>
-    <p><?php bloginfo('description'); ?></p>
-    <nav class="header-nav"><?php wp_nav_menu(['theme_location' => 'main-menu']); ?></nav>
-</header>
-<!-- Wrapper -->
-<div id="wrapper">
+<?php require 'parts/header.php'; ?>
 
     <div id="main">
 
@@ -98,6 +92,7 @@
     <p> &copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?></p>
 </footer>
 
-<?php wp_footer(); ?>
+    <?php wp_footer(); ?>
 </body>
+
 </html>
