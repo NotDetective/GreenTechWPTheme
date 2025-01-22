@@ -23,7 +23,7 @@ function enqueue_theme_scripts()
     wp_enqueue_script('jquery-script', get_template_directory_uri() . '/js/jquery.min.js', array(), '1.0.0', true);
 
     // Enqueue the breakpoint.min.js script
-    wp_enqueue_script('breakpoint-script', get_template_directory_uri() . '/js/breakpoint.min.js', array(), '1.0.0', true);
+    wp_enqueue_script('breakpoint-script', get_template_directory_uri() . '/js/breakpoints.min.js', array(), '1.0.0', true);
 
     // Enqueue browser.min.js
     wp_enqueue_script('browser-script', get_template_directory_uri() . '/js/browser.min.js', array(), '1.0.0', true);
